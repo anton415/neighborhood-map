@@ -1,9 +1,13 @@
 import React, {Component} from 'react';
+import './Map.css';
 
 class Map extends Component {
   render() {
     return (
-      <div className="Map">Map</div>
+      <div className="Map">
+        <div className="Menu-button">Menu button</div>
+        Map
+      </div>
     )
   }
 }
