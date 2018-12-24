@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
-import Map from './components/Map';
+import MapContainer from './components/Map';
 import Search from './components/Search';
 
 class App extends Component {
@@ -8,7 +8,7 @@ class App extends Component {
     return (
       <div className="App">
         <Search/>
-        <Map/>
+        <MapContainer/>
       </div>
     );
   }
