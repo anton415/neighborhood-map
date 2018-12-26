@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
 import './App.css';
-import Map from './components/Map';
-import Search from './components/Search';
+import MapContainer from './components/Map';
+import SearchMenu from './components/SearchMenu';
 
 class App extends Component {
   render() {
     return (
       <div className="App">
-        <Search/>
-        <Map/>
+        <SearchMenu/>
+        <MapContainer/>
       </div>
     );
   }
