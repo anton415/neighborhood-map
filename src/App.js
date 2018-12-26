@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 import './App.css';
 import MapContainer from './components/Map';
-import Search from './components/Search';
+import SearchMenu from './components/SearchMenu';
 
 class App extends Component {
   render() {
     return (
       <div className="App">
-        <Search/>
+        <SearchMenu/>
         <MapContainer/>
       </div>
     );

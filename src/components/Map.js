@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import './Map.css';
 import {Map, GoogleApiWrapper} from 'google-maps-react';
 
 const mapStyles = {
@@ -19,7 +18,6 @@ class MapContainer extends Component {
   render() {
     return (
       <div className="Map">
-        <div className="Menu-button">Menu button</div>
         <Map
           google={this.props.google}
           zoom={14}
