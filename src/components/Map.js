@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Map, GoogleApiWrapper} from 'google-maps-react';
+import {Map, GoogleApiWrapper, Marker, InfoWindow} from 'google-maps-react';
 
 const mapStyles = {
   width: '100%',
@@ -7,12 +7,37 @@ const mapStyles = {
 };
 
 class MapContainer extends Component {
-  static defaultProps = {
-    center: {
-      lat: 59.95,
-      lng: 30.33
-    },
-    zoom: 11
+
+  state = {
+   showingInfoWindow: false,  // Hides or the shows the infoWindow
+   activeMarker: {},          // Shows the active marker upon click
+   selectedPlace: {}          // Shows the infoWindow to the selected place upon a marker
+  };
+
+  /*
+   The onMarkerClick is used to show the InfoWindow
+   which is a component in the google-maps-react library
+   which gives us the ability for a pop-up window showing details
+   of the clicked place/marker.
+  */
+  onMarkerClick = (props, marker, e) =>
+  this.setState({
+    selectedPlace: props,
+    activeMarker: marker,
+    showingInfoWindow: true
+  });
+
+  /*
+    The onClose basically is for closing the InfoWindow
+    once a user clicks on the close button on the infoWindow.
+  */
+  onClose = props => {
+    if (this.state.showingInfoWindow) {
+      this.setState({
+        showingInfoWindow: false,
+        activeMarker: null
+      });
+    }
   };
 
   render() {
@@ -26,7 +51,21 @@ class MapContainer extends Component {
            lat: 55.86430000000001,
            lng: 37.1181543
           }}
-        />
+          >
+            <Marker
+              onClick={this.onMarkerClick}
+              name={'My home.'}
+            />
+            <InfoWindow
+              marker={this.state.activeMarker}
+              visible={this.state.showingInfoWindow}
+              onClose={this.onClose}
+            >
+              <div>
+                <h4>{this.state.selectedPlace.name}</h4>
+              </div>
+            </InfoWindow>
+          </Map>
       </div>
     )
   }
