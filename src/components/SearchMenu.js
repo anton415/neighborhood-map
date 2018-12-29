@@ -8,8 +8,13 @@ class SearchMenu extends Component {
       <Menu>
         <div className="Title">Bart location</div>
         <div className="Search-field">
-          <div className="Search-input">button</div>
-          <div className="Filter-button">filter</div>
+          <form>
+            <label>
+              <input type="text" name="name" />
+              <input type="submit" value="Filter" />
+            </label>
+
+          </form>
         </div>
         <div className="List-of-location">List of location</div>
       </Menu>
