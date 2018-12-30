@@ -7,6 +7,10 @@ class SearchMenu extends Component {
     const {locations} = this.props
     console.log('locations in SearchMenu: ' + locations);
 
+    const listOfLocations = locations.map((location) => (
+      <li>{location.name}</li>
+    ));
+
     return (
       <Menu>
         <div className="Title">Bart location</div>
@@ -19,7 +23,9 @@ class SearchMenu extends Component {
 
           </form>
         </div>
-        <div className="List-of-location">List of location</div>
+        <div className="List-of-location">
+          {listOfLocations}
+        </div>
       </Menu>
     )
   }
