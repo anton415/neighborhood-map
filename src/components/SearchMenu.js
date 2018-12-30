@@ -4,6 +4,9 @@ import { slide as Menu } from 'react-burger-menu'
 
 class SearchMenu extends Component {
   render() {
+    const {locations} = this.props
+    console.log('locations in SearchMenu: ' + locations);
+
     return (
       <Menu>
         <div className="Title">Bart location</div>

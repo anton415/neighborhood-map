@@ -41,6 +41,9 @@ class MapContainer extends Component {
   };
 
   render() {
+    const {locations} = this.props
+    console.log('locations in Map: ' + locations);
+
     return (
       <div className="Map">
         <Map
