@@ -16,15 +16,57 @@ class App extends Component {
       lat: 55.858924, lng: 37.12394},
       {name: "Bakery plant.",
       lat: 55.865475, lng: 37.122159}
-    ]
+    ],
+    initialItems: [
+      "Apples",
+      "Broccoli",
+      "Chicken",
+      "Duck",
+      "Eggs",
+      "Fish",
+      "Granola",
+      "Hash Browns"
+    ],
+    items: []
   }
 
+  filterList = (event) => {
+    console.log('In app filterList');
+    var updatedList = this.state.initialItems;
+    updatedList = updatedList.filter((item) => {
+      return item.toLowerCase().search(event.target.value.toLowerCase()) !== -1;
+    })
+    this.setState({items: updatedList})
+  }
+
+  getInitialState = () => {
+    console.log('In app getInitialState');
+    return {
+      initialItems: [
+        "Apples",
+        "Broccoli",
+        "Chicken",
+        "Duck",
+        "Eggs",
+        "Fish",
+        "Granola",
+        "Hash Browns"
+      ],
+      items: []
+    }
+  }
+
+  componentWillMount = () => {
+    console.log('In app componentWillMount');
+    this.setState({items: this.state.initialItems})
+  }
 
   render() {
+    console.log('In app: ' + this.state.items);
     return (
       <div className="App">
-        <SearchMenu locations={this.state.locations}/>
-        <MapContainer locations={this.state.locations}/>
+        <SearchMenu items={this.state.items}/>
+        <MapContainer items={this.state.items}/>
       </div>
     );
   }
