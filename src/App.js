@@ -4,6 +4,35 @@ import MapContainer from './components/Map';
 import SearchMenu from './components/SearchMenu';
 
 class App extends Component {
+  constructor() {
+    console.log('In app constructor');
+    super();
+    this.handleData = this.handleData.bind(this);
+    this.state = {
+      fromChild: '',
+      initialItems: [
+        "Apples",
+        "Broccoli",
+        "Chicken",
+        "Duck",
+        "Eggs",
+        "Fish",
+        "Granola",
+        "Hash Browns"
+      ],
+      items: [],
+      filteredItems: []
+    };
+  }
+
+  handleData(data) {
+    console.log('In app handleData data: ' + data);
+    this.setState({
+      filteredItems: data
+    });
+    // this.getFilteredItems(data);
+  }
+
   state = {
     locations: [
       {name: "My home.",
@@ -30,43 +59,24 @@ class App extends Component {
     items: []
   }
 
-  filterList = (event) => {
-    console.log('In app filterList');
-    var updatedList = this.state.initialItems;
-    updatedList = updatedList.filter((item) => {
-      return item.toLowerCase().search(event.target.value.toLowerCase()) !== -1;
-    })
-    this.setState({items: updatedList})
-  }
-
-  getInitialState = () => {
-    console.log('In app getInitialState');
-    return {
-      initialItems: [
-        "Apples",
-        "Broccoli",
-        "Chicken",
-        "Duck",
-        "Eggs",
-        "Fish",
-        "Granola",
-        "Hash Browns"
-      ],
-      items: []
-    }
+  getFilteredItems = (items) => {
+    console.log('In app getFilteredItems ' + this.state.items);
+    this.setState({items: items})
   }
 
   componentWillMount = () => {
     console.log('In app componentWillMount');
     this.setState({items: this.state.initialItems})
+    this.setState({filteredItems: this.state.initialItems})
   }
 
   render() {
     console.log('In app: ' + this.state.items);
+    //
     return (
       <div className="App">
-        <SearchMenu items={this.state.items}/>
-        <MapContainer items={this.state.items}/>
+        <SearchMenu items={this.state.items}  handlerFromParant={this.handleData}/>
+        <MapContainer items={this.state.filteredItems}/>
       </div>
     );
   }
