@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import MapContainer from './components/Map';
 import SearchMenu from './components/SearchMenu';
+import ErrorBoundary from './ErrorBoundary';
 
 class App extends Component {
   constructor() {
@@ -44,8 +45,10 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <SearchMenu items={this.state.items}  handlerFromParant={this.handleData}/>
-        <MapContainer items={this.state.filteredItems}/>
+        <ErrorBoundary>
+          <SearchMenu items={this.state.items}  handlerFromParant={this.handleData}/>
+          <MapContainer items={this.state.filteredItems}/>
+        </ErrorBoundary>
       </div>
     );
   }
