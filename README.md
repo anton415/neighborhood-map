@@ -18,5 +18,5 @@ You will also see any lint errors in the console.
 ## Must do!
 Don't forget about Google API. You must create .env file. And write there your API. Look in .env.example !!!
 
-##Contacts
+## Contacts
 I will be happy hear what you think about my code. Text me in 'anton415@gmail.com'.
