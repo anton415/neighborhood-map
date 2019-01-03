@@ -43,7 +43,7 @@ class SearchMenu extends Component {
     console.log('In SearchMenu filterList');
     var updatedList = this.props.items;
     updatedList = updatedList.filter((item) => {
-      return item.toLowerCase().search(event.toLowerCase()) !== -1;
+      return item.name.toLowerCase().search(event.toLowerCase()) !== -1;
     })
     this.setState({items: updatedList});
     // this.submitHandler();
@@ -72,8 +72,8 @@ class SearchMenu extends Component {
         <div className="List-of-location">
           <ol className="listOfItems">
             {items.map((item) => (
-              <li key={item}>
-                {item}
+              <li key={item.name}>
+                {item.name}
               </li>
             ))}
           </ol>

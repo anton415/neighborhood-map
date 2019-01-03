@@ -11,14 +11,16 @@ class App extends Component {
     this.state = {
       fromChild: '',
       initialItems: [
-        "Apples",
-        "Broccoli",
-        "Chicken",
-        "Duck",
-        "Eggs",
-        "Fish",
-        "Granola",
-        "Hash Browns"
+        {name: "My home.",
+        lat: 55.86430000000001, lng: 37.1181543},
+        {name: "My school.",
+        lat: 55.868346, lng: 37.099723},
+        {name: "Sport complecs.",
+        lat: 55.859081, lng: 37.12836},
+        {name: "City Hospital.",
+        lat: 55.858924, lng: 37.12394},
+        {name: "Bakery plant.",
+        lat: 55.865475, lng: 37.122159}
       ],
       items: [],
       filteredItems: []
@@ -34,7 +36,7 @@ class App extends Component {
   }
 
   state = {
-    locations: [
+    initialItems: [
       {name: "My home.",
       lat: 55.86430000000001, lng: 37.1181543},
       {name: "My school.",
@@ -46,7 +48,7 @@ class App extends Component {
       {name: "Bakery plant.",
       lat: 55.865475, lng: 37.122159}
     ],
-    initialItems: [
+    initialItemsTest: [
       "Apples",
       "Broccoli",
       "Chicken",
